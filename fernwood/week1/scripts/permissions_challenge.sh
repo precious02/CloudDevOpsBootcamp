@@ -1,12 +1,19 @@
 #!/bin/bash
 
-echo "Create permissions challenge files"
+echo "Creating new user..."
+sudo useradd Precious
 
-touch precious.txt precious2.txt
+echo "Adding user to group..."
+sudo usermod -aG sudo Precious
 
-chmod 755 precious.txt
-chmod 644 precious2.txt
+echo "Creating file..."
+touch preciousfile.txt
 
-echo "Current  permissions:"
+echo "Assigning file ownership to Precious..."
+sudo chown Precious preciousfile.txt
 
+echo "Setting permissions - owner read only..."
+sudo chmod 400 preciousfile.txt
+
+echo "Current permissions:"
 ls -l
