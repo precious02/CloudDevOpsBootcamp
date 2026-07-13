@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Our first CloudFormation template: A secure S3 bucket with versioning.'
+
+Resources:
+  # 'BootcampStorageBucket' is the logical name we use inside this template
+  BootcampStorageBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      # We don't hardcode the exact bucket name to avoid naming conflicts
+      BucketName: !Sub 'automated-storage-${AWS::AccountId}'
+      
+      # Turning on versioning is just one line of code!
+      VersioningConfiguration:
+        Status: Disabled
+      
+      Tags:
+        - Key: Environment
+          Value: Training
