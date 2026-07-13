@@ -1,2 +1,2 @@
-.idea/
-Precious.txt
+.terraform/
+.terraform.lock.hcl
